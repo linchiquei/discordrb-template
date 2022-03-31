@@ -4,7 +4,7 @@ class DiscordBot::Commands::Time
   end
 
   def call
-    event.respond "現在時間 #{Time.now.strftime('%I:%M %p')}"
+    event.respond "現在時間 #{Time.now.strftime('%H:%M:%S')}"
   end
 
   private
