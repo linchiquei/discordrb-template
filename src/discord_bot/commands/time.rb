@@ -1,10 +1,10 @@
-class DiscordBot::Commands::Ping
+class DiscordBot::Commands::Time
   def initialize(event)
     @event = event
   end
 
   def call
-    event.respond "pong"
+    event.respond "現在時間 #{Time.now.strftime('%I:%M %p')}"
   end
 
   private
