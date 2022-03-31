@@ -9,10 +9,6 @@ module DiscordBot
   puts "This bot's invite URL is #{@bot.invite_url}"
   puts "Click on it to invite it to your server"
 
-  @bot.message(with_text: "") do |event|
-    DiscordBot::Commands::Time.new(event).call
-  end
-
   @bot.message(with_text: "!time") do |event|
     DiscordBot::Commands::Time.new(event).call
   end
