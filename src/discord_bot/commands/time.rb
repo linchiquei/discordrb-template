@@ -4,7 +4,7 @@ class DiscordBot::Commands::Time
   end
 
   def call
-    #getlocal('+08:00')
+    # getlocal('+08:00')
     event.respond "現在時間 #{Time.now.strftime('%I:%M %p')}"
   end
 

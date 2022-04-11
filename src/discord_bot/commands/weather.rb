@@ -1,12 +1,11 @@
-require 'uri'
-require 'net/http'
+require "uri"
+require "net/http"
 require "erb"
-require './lib/mapping'
-require './lib/json_clean'
-include ERB::Util
-
+require "./lib/mapping"
+require "./lib/json_clean"
 
 class DiscordBot::Commands::Weather
+  include ERB::Util
   def initialize(event, args)
     @event = event
     @args = args
@@ -25,7 +24,7 @@ class DiscordBot::Commands::Weather
         embed.colour = 0xff8040
         embed.title = "**#{clean_data.local}**"
         embed.thumbnail = Discordrb::Webhooks::EmbedThumbnail.new(url: Mapping.get_weather_icon(clean_data.state))
-        embed.add_field name: "現在狀態 :", value: "#{clean_data.state}"
+        embed.add_field name: "現在狀態 :", value: clean_data.state.to_s
         embed.add_field name: "下雨機率 :", value: "#{clean_data.rain} %"
         embed.add_field name: "氣溫介於 :", value: "#{clean_data.min} ~ #{clean_data.max} 度之間"
       end
@@ -36,6 +35,5 @@ class DiscordBot::Commands::Weather
 
   private
 
-  attr_reader :event
-  attr_reader :args
+  attr_reader :event, :args
 end

@@ -4,7 +4,7 @@ module DiscordBot
   @bot = Discordrb::Commands::CommandBot.new(
     token: ENV["TOKEN"],
     client_id: ENV["CLIENT_ID"],
-    prefix: '!'
+    prefix: "!",
   )
 
   puts "This bot's invite URL is #{@bot.invite_url}"
