@@ -9,6 +9,8 @@ gem "puma"
 gem "rake"
 gem "sinatra"
 gem "zeitwerk"
+gem "byebug"
+gem "oj"
 
 group :development, :test do
   gem "rubocop"
