@@ -8,14 +8,15 @@ class DiscordBot::Commands::Guess
     event.respond "你啟動了，終極密碼。範圍：1-10"
     event.user.await!(timeout: 300) do |guess_event|
       guess = guess_event.message.content.to_i
-      if guess == 0
-        guess_event.respond '不要鬧我只猜數字'
+      case guess
+      when 0
+        guess_event.respond "不要鬧我只猜數字"
         false
-      elsif guess == magic
-        guess_event.respond '嘿嘿嘿你贏了'
+      when magic
+        guess_event.respond "嘿嘿嘿你贏了"
         true
       else
-        guess_event.respond(guess > magic ? '太大摟' : '太小摟')
+        guess_event.respond(guess > magic ? "太大摟" : "太小摟")
         false
       end
     end
