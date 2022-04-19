@@ -22,6 +22,10 @@ module DiscordBot
     DiscordBot::Commands::Weather.new(event, local).call
   end
 
+  @bot.command :help do |event|
+    DiscordBot::Commands::Help.new(event).call
+  end
+
   def self.run
     @bot.run
   end
