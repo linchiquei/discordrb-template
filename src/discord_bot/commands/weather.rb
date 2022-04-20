@@ -5,6 +5,7 @@ require "./lib/mapping"
 require "./lib/json_clean"
 require "byebug"
 
+
 class DiscordBot::Commands::Weather
   include ERB::Util
   def initialize(event, args)
@@ -23,7 +24,7 @@ class DiscordBot::Commands::Weather
       clean_data = JsonClean.get_weather_params(res.body)
       url = Mapping.get_weather_icon(clean_data.state)
     
-      while url.blank?
+      while url.nil? || url.empty?
         false
       end
         embed = Discordrb::Webhooks::Embed.new
