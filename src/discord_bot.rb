@@ -26,6 +26,10 @@ module DiscordBot
     DiscordBot::Commands::Help.new(event).call
   end
 
+  @bot.command :covid do |event|
+    DiscordBot::Commands::Covid.new(event).call
+  end
+
   def self.run
     @bot.run
   end
