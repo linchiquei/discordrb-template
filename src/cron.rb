@@ -10,9 +10,10 @@ module Cron
     Handlers::CovidHandler.call(@bot)
   end
 
-  @scheduler.every '10s' do
-    @bot.send_message("959097200183496705", "cron job test")
-  end
+  # 正式站測試機器人頻道
+  # @scheduler.every '10s' do
+  #   @bot.send_message("959097200183496705", "cron job test")
+  # end
 
   def self.run
     @bot.run
