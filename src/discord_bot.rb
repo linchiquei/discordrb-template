@@ -1,11 +1,9 @@
+require "./lib/factory_bot"
+
 module DiscordBot
   throw "Lacking required secrets!" unless ENV["TOKEN"] && ENV["CLIENT_ID"]
 
-  @bot = Discordrb::Commands::CommandBot.new(
-    token: ENV["TOKEN"],
-    client_id: ENV["CLIENT_ID"],
-    prefix: "!",
-  )
+  @bot = FactoryBot.bot
 
   puts "This bot's invite URL is #{@bot.invite_url}"
   puts "Click on it to invite it to your server"

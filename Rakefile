@@ -22,6 +22,10 @@ task :bot do
   DiscordBot.run
 end
 
+task :cron do
+  Cron.run
+end
+
 task :web do
   Rack::Server.start(
     Port: ENV["PORT"] || 4567,
@@ -30,6 +34,7 @@ task :web do
 end
 
 task :all do
+  Process.fork { Rake::Task["cron"].invoke }
   Process.fork { Rake::Task["bot"].invoke }
   Process.fork { Rake::Task["web"].invoke }
   Process.waitall
