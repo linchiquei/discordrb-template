@@ -4,11 +4,13 @@ class Handlers::WahahaHandler
 
   def initialize(bot)
     @bot = bot
-    @b = Watir::Browser.start ENV["WAHAHA_URL"]
+    args = %w[--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --remote-debugging-port=9222]
+    @b = Watir::Browser.new :chrome, options: {args: args}
   end
 
   def run
     begin
+      @b.goto(ENV['WAHAHA_URL'])
       btn = @b.button :class => 'pcmall-dailycheckin_3uUmyu'
       btn.click
   
