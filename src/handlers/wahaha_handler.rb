@@ -33,7 +33,7 @@ class Handlers::WahahaHandler
         send_run_status("簽過了")
       end
     rescue => exception
-      send_run_status(exception.join(','))
+      send_run_status(exception)
     end
   end
 
