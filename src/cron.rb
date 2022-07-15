@@ -10,6 +10,10 @@ module Cron
     Handlers::CovidHandler.call(@bot)
   end
 
+  @scheduler.cron '30 0 * * *' do
+    Handlers::WahahaHandler.new(@bot).run
+  end
+
   # 正式站測試機器人頻道
   # @scheduler.every '10s' do
   #   @bot.send_message("959097200183496705", "cron job test")
