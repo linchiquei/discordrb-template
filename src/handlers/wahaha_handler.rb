@@ -1,9 +1,9 @@
 require 'watir'
 
 class Handlers::WahahaHandler
-  def self.run(bot)
+  def self.run(bot, brower)
     @bot = bot
-    @b = get_brower
+    @b = brower
     begin
       @b.goto(ENV['WAHAHA_URL'])
       btn = @b.button :class => 'pcmall-dailycheckin_3uUmyu'
@@ -33,12 +33,6 @@ class Handlers::WahahaHandler
       send_run_status(exception)
     end
   end
-
-  def self.get_brower
-    args = %w[--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --remote-debugging-port=9222]
-    Watir::Browser.new :chrome, options: {args: args}
-  end
-
 
   def self.send_run_status(msg)
     @bot.send_message("961525720444727336", msg)

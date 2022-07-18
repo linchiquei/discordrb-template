@@ -3,9 +3,13 @@ require "./lib/factory_bot"
 
 # todo 指令可下暫停和重新開始 job
 module Cron
+
+  #singleton
   @bot = FactoryBot.bot
+  @browser = FactoryBot.sign_bot
+
   @scheduler = Rufus::Scheduler.new
-  
+
   @scheduler.cron '30 14 * * *' do
     Handlers::CovidHandler.call(@bot)
   end
@@ -16,7 +20,7 @@ module Cron
 
   # 正式站測試機器人頻道
   @scheduler.every '20s' do
-    #Handlers::WahahaHandler.run(@bot)
+    Handlers::WahahaHandler.run(@bot, @browser)
     #@bot.send_message("961525720444727336", "cron job test")
   end
 
