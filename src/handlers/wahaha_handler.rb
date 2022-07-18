@@ -34,14 +34,13 @@ class Handlers::WahahaHandler
     end
   end
 
-  private
-  def get_brower
+  def self.get_brower
     args = %w[--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --remote-debugging-port=9222]
     Watir::Browser.new :chrome, options: {args: args}
   end
 
 
-  def send_run_status(msg)
+  def self.send_run_status(msg)
     @bot.send_message("961525720444727336", msg)
     @b.close
   end
