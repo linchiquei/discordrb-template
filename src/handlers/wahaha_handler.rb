@@ -1,33 +1,28 @@
 require 'watir'
 
 class Handlers::WahahaHandler
-
-  def initialize(bot)
+  def self.run(bot)
     @bot = bot
-    args = %w[--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --remote-debugging-port=9222]
-    @b = Watir::Browser.new :chrome, options: {args: args}
-  end
-
-  def run
+    @b = get_brower
     begin
       @b.goto(ENV['WAHAHA_URL'])
       btn = @b.button :class => 'pcmall-dailycheckin_3uUmyu'
+      sleep 3
       btn.click
   
       nt = @b.text_field :name => 'loginKey'
       nt.set ENV["WA"]
       nt.value
-  
       pt = @b.text_field :name => 'password'
       pt.set ENV["HAHA"]
       pt.value
   
-      sleep 5
-  
       yyy = @b.button :class => "wyhvVD _1EApiB hq6WM5 L-VL8Q cepDQ1 _7w24N1"
+      sleep 3
       yyy.click
   
       ooo = @b.button :class => 'pcmall-dailycheckin_3uUmyu'
+      sleep 3
       if ooo.text != ENV["HA"]
         ooo.click
         send_run_status("成功")
@@ -40,6 +35,11 @@ class Handlers::WahahaHandler
   end
 
   private
+  def get_brower
+    args = %w[--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --remote-debugging-port=9222]
+    Watir::Browser.new :chrome, options: {args: args}
+  end
+
 
   def send_run_status(msg)
     @bot.send_message("961525720444727336", msg)
