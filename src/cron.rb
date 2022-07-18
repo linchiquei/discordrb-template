@@ -19,7 +19,7 @@ module Cron
 
   # 正式站測試機器人頻道
   @scheduler.every '20s' do
-    Handlers::WahahaHandler.run(@bot, @browser)
+    #Handlers::WahahaHandler.run(@bot, @browser)
     #@bot.send_message("961525720444727336", "cron job test")
   end
 
