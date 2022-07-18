@@ -1,2 +1,3 @@
 web: rake web
 bot: rake bot
+cron: rake cron
