@@ -36,7 +36,6 @@ class Handlers::WahahaHandler
 
   def self.send_run_status(msg)
     @bot.send_message("961525720444727336", msg)
-    @b.close
   end
 end
 

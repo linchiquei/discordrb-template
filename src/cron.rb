@@ -7,7 +7,6 @@ module Cron
   #singleton
   @bot = FactoryBot.bot
   @browser = FactoryBot.sign_bot
-
   @scheduler = Rufus::Scheduler.new
 
   @scheduler.cron '30 14 * * *' do
