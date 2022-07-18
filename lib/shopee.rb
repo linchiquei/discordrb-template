@@ -7,7 +7,7 @@ class Shopee
 
   def initialize
     @init_status = false
-    args = %w[--no-sandbox --disable-dev-shm-usage --disable-gpu --remote-debugging-port=9222]
+    args = %w[--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --remote-debugging-port=9222]
     @brower = Watir::Browser.new :chrome, options: {args: args}
   end
 

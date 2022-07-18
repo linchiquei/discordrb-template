@@ -6,7 +6,7 @@ class Handlers::WahahaHandler
     @b = brower
     @start = start
     begin
-      @b.goto("https://shopee.tw/shopee-coins/")
+      @b.goto(ENV['WAHAHA_URL'])
       coin_btn = @b.button :class => 'pcmall-dailycheckin_3uUmyu'
       sleep 3
 
@@ -15,10 +15,10 @@ class Handlers::WahahaHandler
       else
         coin_btn.click
         name_text = @b.text_field :name => 'loginKey'
-        name_text.set "cclok922"
+        name_text.set ENV['WA']
         name_text.value
         pass_text = @b.text_field :name => 'password'
-        pass_text.set "K089570ze"
+        pass_text.set ENV['HAHA']
         pass_text.value
     
         sign_btn = @b.button :class => "wyhvVD _1EApiB hq6WM5 L-VL8Q cepDQ1 _7w24N1"
