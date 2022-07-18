@@ -4,7 +4,7 @@ require "./lib/factory_bot"
 # todo 指令可下暫停和重新開始 job
 module Cron
   @bot = FactoryBot.bot
-  @scheduler = Rufus::Scheduler.singleton
+  @scheduler = Rufus::Scheduler.new
   
   @scheduler.cron '30 14 * * *' do
     Handlers::CovidHandler.call(@bot)
@@ -15,9 +15,13 @@ module Cron
   # end
 
   # 正式站測試機器人頻道
-  # @scheduler.every '10s' do
-  #   @bot.send_message("959097200183496705", "cron job test")
-  # end
+  @scheduler.every '10s' do
+    @bot.send_message("959097200183496705", "cron job test")
+  end
+
+  @scheduler.every '20s' do
+    @bot.send_message("959097200183496705", "測試同步執行任務")
+  end
 
   def self.run
     @bot.run
