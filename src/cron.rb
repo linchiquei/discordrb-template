@@ -15,13 +15,9 @@ module Cron
   # end
 
   # 正式站測試機器人頻道
-  @scheduler.every '10s' do
-    @bot.send_message("959097200183496705", "cron job test")
-  end
-
-  @scheduler.every '20s' do
-    @bot.send_message("959097200183496705", "測試同步執行任務")
-  end
+  # @scheduler.every '10s' do
+  #   @bot.send_message("959097200183496705", "cron job test")
+  # end
 
   def self.run
     @bot.run
