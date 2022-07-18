@@ -6,7 +6,7 @@ class Handlers::WahahaHandler
     @b = brower
     @start = start
     begin
-      @b.goto(ENV['WAHAHA_URL'])
+      @b.goto("https://shopee.tw/shopee-coins/")
       coin_btn = @b.button :class => 'pcmall-dailycheckin_3uUmyu'
       sleep 3
 

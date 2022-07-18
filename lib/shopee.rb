@@ -18,5 +18,6 @@ class Shopee
     btn.click
     sleep 3
     brower.close
+    @init_status = false
   end
 end
