@@ -1,6 +1,8 @@
 ENV["RUBY_ENV"] ||= "development"
 require "bundler/setup"
 require "dotenv/load" if ENV["RUBY_ENV"] != "production"
+require "./lib/factory_bot"
+require "./lib/shopee"
 
 Bundler.require(:default, ENV["RUBY_ENV"])
 loader = Zeitwerk::Loader.for_gem
@@ -26,6 +28,12 @@ task :cron do
   Cron.run
 end
 
+task :shopee do
+  @bot = FactoryBot.bot
+  @shopee = Shopee.new
+  Handlers::ShopeeHandler.run(@bot, @shopee)
+end
+
 task :web do
   Rack::Server.start(
     Port: ENV["PORT"] || 4567,
@@ -35,6 +43,7 @@ end
 
 task :all do
   Process.fork { Rake::Task["cron"].invoke }
+  Process.fork { Rake::Task["shopee"].invoke }
   Process.fork { Rake::Task["bot"].invoke }
   Process.fork { Rake::Task["web"].invoke }
   Process.waitall
