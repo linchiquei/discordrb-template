@@ -6,46 +6,28 @@ class Handlers::ShopeeHandler
     @b = shopee.brower
 
     @b.goto("https://shopee.tw/shopee-coins/")
-    coin_btn = @b.button(class: "pcmall-dailycheckin_3uUmyu").click
-    #check_exists?(coin_btn, "簽錢按鈕")
-    #coin_btn.click
+    @b.button(class: "pcmall-dailycheckin_3uUmyu").click
+    notify_discord("點擊簽錢")
 
-    name_text = @b.text_field(placeholder: "電話號碼/使用者名稱/Email").set ENV['WA']
-    #check_exists?(name_text, "輸入名字")
-    #name_text.set ENV['WA']
+    @b.text_field(placeholder: "電話號碼/使用者名稱/Email").set ENV['WA']
+    notify_discord("輸入名字")
 
-    pass_text = @b.text_field(placeholder: "密碼").set ENV['HAHA']
-    #check_exists?(pass_text, "輸入密碼")
-    #pass_text.set ENV['HAHA']
+    @b.text_field(placeholder: "密碼").set ENV['HAHA']
+    notify_discord("輸入密碼")
 
-    sign_btn = @b.button(class: "wyhvVD _1EApiB hq6WM5 L-VL8Q cepDQ1 _7w24N1").click
-    #check_exists?(sign_btn, "登入按鈕")
-    #sign_btn.click
+    @b.button(class: "wyhvVD _1EApiB hq6WM5 L-VL8Q cepDQ1 _7w24N1").click
+    notify_discord("點擊登入")
 
     #直接轉回簽錢頁面
-    sleep 3
-    if @b.button(class: "pcmall-dailycheckin_3uUmyu").text.match?(/今日簽到獲得/)
-      @b.button(class: "pcmall-dailycheckin_3uUmyu").click
-      notify_discord("成功")
-    else
-      notify_discord("簽過了")
-    end
+    # sleep 3
+    # if @b.button(class: "pcmall-dailycheckin_3uUmyu").text.match?(/今日簽到獲得/)
+    #   @b.button(class: "pcmall-dailycheckin_3uUmyu").click
+    #   notify_discord("成功")
+    # else
+    #   notify_discord("簽過了")
+    # end
     sleep 3
     @b.close
-  end
-
-  def self.check_exists?(o, msg)
-    sleep 3
-    if !o.exists?
-      info = "找不到 #{msg}"
-      puts info
-      notify_discord(info)
-      @b.close
-    end
-  end
-
-  def self.check_status(btn)
-    
   end
 
   def self.notify_discord(msg)
