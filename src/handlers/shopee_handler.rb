@@ -23,7 +23,13 @@ class Handlers::ShopeeHandler
     #sign_btn.click
 
     #直接轉回簽錢頁面
-    check_status(coin_btn)
+    sleep 3
+    if @b.button(class: "pcmall-dailycheckin_3uUmyu").text.match?(/今日簽到獲得/)
+      @b.button(class: "pcmall-dailycheckin_3uUmyu").click
+      notify_discord("成功")
+    else
+      notify_discord("簽過了")
+    end
     sleep 3
     @b.close
   end
@@ -39,13 +45,7 @@ class Handlers::ShopeeHandler
   end
 
   def self.check_status(btn)
-    sleep 3
-    if btn.text.match?(/今日簽到獲得/)
-      btn.click
-      notify_discord("成功")
-    else
-      notify_discord("簽過了")
-    end
+    
   end
 
   def self.notify_discord(msg)
