@@ -6,23 +6,21 @@ class Handlers::ShopeeHandler
     @b = shopee.brower
 
     @b.goto("https://shopee.tw/shopee-coins/")
-    coin_btn = @b.button :class => "pcmall-dailycheckin_3uUmyu"
-    check_exists?(coin_btn, "簽錢按鈕")
-    coin_btn.click
+    coin_btn = @b.button(class: "pcmall-dailycheckin_3uUmyu").click
+    #check_exists?(coin_btn, "簽錢按鈕")
+    #coin_btn.click
 
-    name_text = @b.text_field :placeholder => "電話號碼/使用者名稱/Email"
-    check_exists?(name_text, "輸入名字")
-    name_text.set ENV['WA']
-    name_text.value
+    name_text = @b.text_field(placeholder: "電話號碼/使用者名稱/Email").set ENV['WA']
+    #check_exists?(name_text, "輸入名字")
+    #name_text.set ENV['WA']
 
-    pass_text = @b.text_field :placeholder => "密碼"
-    check_exists?(pass_text, "輸入密碼")
-    pass_text.set ENV['HAHA']
-    pass_text.value
+    pass_text = @b.text_field(placeholder: "密碼").set ENV['HAHA']
+    #check_exists?(pass_text, "輸入密碼")
+    #pass_text.set ENV['HAHA']
 
-    sign_btn = @b.button :class => "wyhvVD _1EApiB hq6WM5 L-VL8Q cepDQ1 _7w24N1"
-    check_exists?(sign_btn, "登入按鈕")
-    sign_btn.click
+    sign_btn = @b.button(class: "wyhvVD _1EApiB hq6WM5 L-VL8Q cepDQ1 _7w24N1").click
+    #check_exists?(sign_btn, "登入按鈕")
+    #sign_btn.click
 
     #直接轉回簽錢頁面
     check_status(coin_btn)
