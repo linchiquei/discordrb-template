@@ -19,15 +19,13 @@ class Handlers::ShopeeHandler
     notify_discord("點擊登入")
 
     #直接轉回簽錢頁面
-    # sleep 3
-    # if @b.button(class: "pcmall-dailycheckin_3uUmyu").text.match?(/今日簽到獲得/)
-    #   @b.button(class: "pcmall-dailycheckin_3uUmyu").click
-    #   notify_discord("成功")
-    # else
-    #   notify_discord("簽過了")
-    # end
-    sleep 3
-    @b.close
+    if @b.button(class: "pcmall-dailycheckin_3uUmyu").text.match?(/今日簽到獲得/)
+      @b.button(class: "pcmall-dailycheckin_3uUmyu").click
+      notify_discord("成功")
+    else
+      notify_discord("簽過了")
+    end
+    notify_discord("財富密碼就是積沙成塔")
   end
 
   def self.notify_discord(msg)
