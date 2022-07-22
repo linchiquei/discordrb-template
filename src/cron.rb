@@ -20,7 +20,7 @@ module Cron
 
   # 正式站測試機器人頻道
   @scheduler.every '20s' do
-    #Handlers::WahahaHandler.run(@bot, @shopee.brower, @shopee.init_status)
+    Handlers::ShopeeHandler.run(@bot, @shopee)
     #@shopee.init_status = true
   end
 
