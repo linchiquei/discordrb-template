@@ -19,10 +19,10 @@ module Cron
   # end
 
   # 正式站測試機器人頻道
-  @scheduler.every '20s' do
+  #@scheduler.every '20s' do
     #Handlers::ShopeeHandler.run(@bot, @shopee)
     #@shopee.init_status = true
-  end
+  #end
 
   def self.run
     @bot.run

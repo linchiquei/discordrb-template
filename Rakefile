@@ -43,7 +43,7 @@ end
 
 task :all do
   Process.fork { Rake::Task["cron"].invoke }
-  Process.fork { Rake::Task["shopee"].invoke }
+  #Process.fork { Rake::Task["shopee"].invoke }
   Process.fork { Rake::Task["bot"].invoke }
   Process.fork { Rake::Task["web"].invoke }
   Process.waitall
