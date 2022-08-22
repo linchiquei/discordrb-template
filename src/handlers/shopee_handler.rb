@@ -1,5 +1,6 @@
 require "./lib/shopee"
 
+# 哇！授權還不知道怎麼解決。
 class Handlers::ShopeeHandler
   def self.run(bot, shopee)
     @bot = bot
