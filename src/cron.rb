@@ -19,7 +19,8 @@ module Cron
   # end
 
   @scheduler.cron '0 19 * * *' do
-    Handlers::ArticleHandler.call(@bot)
+    $count = 0
+    Handlers::ArticleHandler.call(@bot, $count)
   end
 
   # 正式站測試機器人頻道
