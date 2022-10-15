@@ -14,7 +14,7 @@ gem "sinatra"
 gem "zeitwerk"
 gem 'nokogiri', '~> 1.13', '>= 1.13.4'
 gem 'rufus-scheduler', '~> 3.2'
-gem 'watir'
+
 
 group :development, :test do
   gem "rubocop"
