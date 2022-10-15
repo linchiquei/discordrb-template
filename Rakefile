@@ -2,7 +2,7 @@ ENV["RUBY_ENV"] ||= "development"
 require "bundler/setup"
 require "dotenv/load" if ENV["RUBY_ENV"] != "production"
 require "./lib/factory_bot"
-require "./lib/shopee"
+
 
 Bundler.require(:default, ENV["RUBY_ENV"])
 loader = Zeitwerk::Loader.for_gem
